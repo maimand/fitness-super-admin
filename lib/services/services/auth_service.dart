@@ -15,6 +15,7 @@ class AuthService extends GetxService {
 
   @override
   void onInit() {
+    onLogin('superadmin@test.com', '123456');
     super.onInit();
   }
 
