@@ -44,9 +44,11 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 AdminModel _$AdminModelFromJson(Map<String, dynamic> json) {
   return AdminModel(
+    id: json['_id'] as String?,
     fullname: json['fullname'] as String?,
     email: json['email'] as String?,
     code: json['code'] as String?,
+    center: json['center'] as String?,
   );
 }
 

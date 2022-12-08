@@ -15,7 +15,6 @@ class AuthService extends GetxService {
 
   @override
   void onInit() {
-    getUserInfo();
     super.onInit();
   }
 
@@ -25,42 +24,12 @@ class AuthService extends GetxService {
       final res = await authRepository.login(username, password);
       final prefs = await SharedPreferences.getInstance();
       prefs.setString('accessToken', res.accessToken!);
-      getUserInfo();
+      Get.to(() => HomeScreen());
     } on Exception catch (e) {
       Get.snackbar(
         'Login Error',
         e.toString(),
       );
-    } finally {
-      EasyLoading.dismiss();
-    }
-  }
-
-  void getUserInfo() async {
-    try {
-      final res = await authRepository.getAdminCode();
-      userModel.value = res;
-      Get.to(() => HomeScreen());
-    } on Exception catch (e) {
-      Get.snackbar(
-        'Get Info Error',
-        e.toString(),
-      );
-    }
-  }
-
-  void onRegister(
-      {required String username,
-      required String password,
-      required String email,
-      required String code}) async {
-    try {
-      EasyLoading.show();
-      await authRepository.register(
-          fullname: username, password: password, email: email, code: code);
-      Get.offAll(() => Login(title: 'Login'));
-    } on Exception catch (e) {
-      Get.snackbar('Register failed', e.toString());
     } finally {
       EasyLoading.dismiss();
     }

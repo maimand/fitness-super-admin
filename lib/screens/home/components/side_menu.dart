@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:smart_admin_dashboard/core/constants/color_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smart_admin_dashboard/screens/home/home_controller.dart';
 import 'package:smart_admin_dashboard/services/services/auth_service.dart';
 
 class SideMenu extends StatelessWidget {
@@ -38,14 +39,18 @@ class SideMenu extends StatelessWidget {
               ),
             ),
             DrawerListTile(
-              title: "Users",
+              title: "Admins",
               svgSrc: "assets/icons/menu_profile.svg",
-              press: () {},
+              press: () {
+                Get.find<HomeController>().setPage(0);
+              },
             ),
             DrawerListTile(
-              title: "Exercises",
+              title: "Admin Codes",
               svgSrc: "assets/icons/menu_setting.svg",
-              press: () {},
+              press: () {
+                Get.find<HomeController>().setPage(1);
+              },
             ),
             DrawerListTile(
               title: "Log out",

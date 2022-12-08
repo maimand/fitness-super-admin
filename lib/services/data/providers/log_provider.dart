@@ -6,34 +6,30 @@ class LogProvider {
 
   LogProvider(this.networkService);
 
-  final String getUsersUrl = '$baseUrl/admin/get-users';
-  final String getExerciseLogUrl = '$baseUrl/admin/exercises-logs';
-  final String getFoodLogUrl = '$baseUrl/admin/food-logs';
-  final String deleteUserUrl = '$baseUrl/admin/delete';
+  final String getAdminsUrl = '$baseUrl/super-admin/get-admins';
+  final String getAdminCodesUrl = '$baseUrl/super-admin/get-admin-codes';
+  final String deleteAdminUrl = '$baseUrl/super-admin/delete';
+  final String addAdminUrl = '$baseUrl/super-admin/add-admin';
 
-  Future<HttpResponse> getDietLogs(String email,
+
+  Future<HttpResponse> getAdmins(
       {int page = 1, int size = 20}) {
-    return networkService.get('$getFoodLogUrl/$email');
+    return networkService.get(getAdminsUrl);
   }
 
-  Future<HttpResponse> getExerciseLogs(String email,
+  Future<HttpResponse> getAdminCodes(
       {int page = 1, int size = 20}) {
-    return networkService.get('$getExerciseLogUrl/$email');
+    return networkService.get(getAdminCodesUrl);
   }
 
   Future<HttpResponse> deleteUser(
-    String email,
+    String id,
   ) {
-    return networkService.delete('$deleteUserUrl/$email');
+    return networkService.delete('$deleteAdminUrl/$id');
   }
 
-  Future<HttpResponse> getUsers({int page = 1, int size = 20}) {
-    return networkService.get(getUsersUrl);
+  Future<HttpResponse> addAdmin(String adminName) {
+    return networkService.post('$addAdminUrl/$adminName');
   }
 
-
-
-  // Future<HttpResponse> getFoodDetailByName({required String name}) {
-  //   return networkService.get('$getDietUrl/$name');
-  // }
 }

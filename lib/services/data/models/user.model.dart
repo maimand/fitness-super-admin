@@ -54,13 +54,17 @@ class UserModel {
 
 @JsonSerializable()
 class AdminModel {
+  final String? id;
   final String? fullname;
   final String? email;
   final String? code;
+  final String? center;
 
   AdminModel(
       {this.fullname,
+        this.id,
       this.email,
+      this.center,
       this.code});
 
   factory AdminModel.fromJson(Map<String, dynamic> json) =>

@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 import 'package:smart_admin_dashboard/services/data/models/user.model.dart';
 import 'package:smart_admin_dashboard/services/data/repositories/log_repository.dart';
 
-class DashboardController extends GetxController {
+class CodesController extends GetxController {
   final LogRepository repository;
   RxList<AdminModel> users = <AdminModel>[].obs;
 
-  DashboardController(this.repository);
+  CodesController(this.repository);
 
   @override
   void onInit() {
@@ -18,10 +18,10 @@ class DashboardController extends GetxController {
   void getUsers() async {
     try {
       EasyLoading.show();
-      final res = await repository.getAdmins();
+      final res = await repository.getAdminCodes();
       users.assignAll(res);
     } on Exception catch (e) {
-      Get.snackbar('Get Admins Error', e.toString());
+      Get.snackbar('Get Codes Error', e.toString());
     } finally {
       EasyLoading.dismiss();
     }
@@ -31,7 +31,7 @@ class DashboardController extends GetxController {
     try {
       repository.deleteUser(user.id!);
     } on Exception catch (e) {
-      Get.snackbar('Delete Admins Error', e.toString());
+      Get.snackbar('Delete User Error', e.toString());
     }
   }
 

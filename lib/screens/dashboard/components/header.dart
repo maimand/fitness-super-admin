@@ -1,9 +1,7 @@
-import 'package:get/get.dart';
 import 'package:smart_admin_dashboard/core/constants/color_constants.dart';
 import 'package:smart_admin_dashboard/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smart_admin_dashboard/services/services/auth_service.dart';
 
 class Header extends StatelessWidget {
   const Header({
@@ -37,44 +35,7 @@ class Header extends StatelessWidget {
               ),
             ],
           ),
-        const Spacer(),
-        ProfileCard()
       ],
-    );
-  }
-}
-
-class ProfileCard extends StatelessWidget {
-  const ProfileCard({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(left: defaultPadding),
-      padding: EdgeInsets.symmetric(
-        horizontal: defaultPadding,
-        vertical: defaultPadding / 2,
-      ),
-      decoration: BoxDecoration(
-        color: secondaryColor,
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
-        border: Border.all(color: Colors.white10),
-      ),
-      child: Row(
-        children: [
-          CircleAvatar(
-            backgroundImage: AssetImage("assets/images/profile_pic.png"),
-          ),
-          if (!Responsive.isMobile(context))
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
-              child: Obx(() => Text("${Get.find<AuthService>().userModel.value?.email}")),
-            ),
-        ],
-      ),
     );
   }
 }

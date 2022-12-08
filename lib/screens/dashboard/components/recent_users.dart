@@ -3,7 +3,6 @@ import 'package:smart_admin_dashboard/core/constants/color_constants.dart';
 import 'package:colorize_text_avatar/colorize_text_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_admin_dashboard/screens/dashboard/controllers/dashboard_controller.dart';
-import 'package:smart_admin_dashboard/screens/forms/input_form.dart';
 import 'package:smart_admin_dashboard/services/data/models/user.model.dart';
 
 class RecentUsers extends StatelessWidget {
@@ -42,6 +41,9 @@ class RecentUsers extends StatelessWidget {
                     DataColumn(
                       label: Text("E-mail"),
                     ),
+                    DataColumn(
+                      label: Text("Center"),
+                    ),
                   ],
                   rows: List.generate(
                     controller.users.length,
@@ -57,7 +59,7 @@ class RecentUsers extends StatelessWidget {
   }
 }
 
-DataRow recentUserDataRow(UserModel userInfo, BuildContext context) {
+DataRow recentUserDataRow(AdminModel userInfo, BuildContext context) {
   return DataRow(
     cells: [
       DataCell(
@@ -85,27 +87,21 @@ DataRow recentUserDataRow(UserModel userInfo, BuildContext context) {
         ),
       ),
       DataCell(
+        Text(
+          userInfo.email!,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ),
+      DataCell(
         Row(
           children: [
             Text(
-              userInfo.email!,
+              userInfo.center ?? '',
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
             const Spacer(),
-            TextButton(
-              child: Text('View', style: TextStyle(color: greenColor)),
-              onPressed: () {
-                Navigator.of(context).push(new MaterialPageRoute<Null>(
-                    builder: (BuildContext context) {
-                      return new FormMaterial(user: userInfo);
-                    },
-                    fullscreenDialog: true));
-              },
-            ),
-            SizedBox(
-              width: 6,
-            ),
             TextButton(
               child: Text("Delete", style: TextStyle(color: Colors.redAccent)),
               onPressed: () {

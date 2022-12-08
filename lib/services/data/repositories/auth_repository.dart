@@ -13,20 +13,4 @@ class AuthRepository {
     return result;
   }
 
-  Future<void> register(
-      {required String fullname,
-      required String password,
-      required String email,
-      required String code}) async {
-    await provider.register(
-        fullname: fullname, password: password, email: email, code: code);
-  }
-
-  Future<AdminModel> getAdminCode() async {
-    final response = await provider.getUserCode();
-    final result = AdminModel.fromJson(response.body['data']);
-    return result;
-  }
-
-
 }
