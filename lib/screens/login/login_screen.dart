@@ -143,38 +143,6 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                     passwordController.text.trim());
               },
             ),
-            SizedBox(height: 24.0),
-            Center(
-              child: Wrap(
-                runAlignment: WrapAlignment.center,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  Text(
-                    "Don't have an account yet?",
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(fontWeight: FontWeight.w300),
-                  ),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      if (_isMoved) {
-                        _animationController!.reverse();
-                      } else {
-                        _animationController!.forward();
-                      }
-                      _isMoved = !_isMoved;
-                    },
-                    child: Text("Sign up",
-                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                            fontWeight: FontWeight.w400, color: greenColor)),
-                  )
-                ],
-              ),
-            ),
           ],
         ),
       ),
