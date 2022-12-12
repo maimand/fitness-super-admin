@@ -27,9 +27,10 @@ class DashboardController extends GetxController {
     }
   }
 
-  void deleteUser(AdminModel user) {
+  void deleteUser(AdminModel user) async {
     try {
-      repository.deleteUser(user.id!);
+      await repository.deleteUser(user.id!);
+      getUsers();
     } on Exception catch (e) {
       Get.snackbar('Delete Admins Error', e.toString());
     }
