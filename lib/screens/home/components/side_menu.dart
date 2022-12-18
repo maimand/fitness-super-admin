@@ -46,7 +46,7 @@ class SideMenu extends StatelessWidget {
               },
             ),
             DrawerListTile(
-              title: "Admin Codes",
+              title: "Centers",
               svgSrc: "assets/icons/menu_setting.svg",
               press: () {
                 Get.find<HomeController>().setPage(1);

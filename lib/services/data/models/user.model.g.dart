@@ -42,16 +42,6 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
   );
 }
 
-AdminModel _$AdminModelFromJson(Map<String, dynamic> json) {
-  return AdminModel(
-    id: json['_id'] as String?,
-    fullname: json['fullname'] as String?,
-    email: json['email'] as String?,
-    code: json['code'] as String?,
-    center: json['center'] as String?,
-  );
-}
-
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'fullname': instance.fullname,
       'email': instance.email,
@@ -60,6 +50,48 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'age': instance.age,
       'fatPercent': instance.fatPercent,
       'gender': instance.gender,
+    };
+
+AdminModel _$AdminModelFromJson(Map<String, dynamic> json) {
+  return AdminModel(
+    fullname: json['fullname'] as String?,
+    id: json['_id'] as String?,
+    email: json['email'] as String?,
+    center: json['center'] as String?,
+    code: json['code'] as String?,
+    active: json['active'] as bool?,
+  );
+}
+
+Map<String, dynamic> _$AdminModelToJson(AdminModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'fullname': instance.fullname,
+      'email': instance.email,
+      'code': instance.code,
+      'center': instance.center,
+    };
+
+CenterModel _$CenterFromJson(Map<String, dynamic> json) {
+  return CenterModel(
+    fullname: json['fullname'] as String?,
+    phone: json['phone'] as String?,
+    email: json['email'] as String?,
+    image: json['image'] as String?,
+    description: json['description'] as String?,
+    website: json['website'] as String?,
+    code: json['code'] as String?,
+  );
+}
+
+Map<String, dynamic> _$CenterToJson(CenterModel instance) => <String, dynamic>{
+      'fullname': instance.fullname,
+      'email': instance.email,
+      'code': instance.code,
+      'phone': instance.phone,
+      'image': instance.image,
+      'description': instance.description,
+      'website': instance.website,
     };
 
 UpdateUserRequest _$UpdateUserRequestFromJson(Map<String, dynamic> json) {
@@ -111,7 +143,7 @@ UserInfoAdvancePredictRequest _$UserInfoAdvancePredictRequestFromJson(
     (json['thingh'] as num).toDouble(),
     (json['weight'] as num).toDouble(),
     (json['height'] as num).toDouble(),
-    (json['sex'] as String),
+    json['sex'] as String,
   );
 }
 

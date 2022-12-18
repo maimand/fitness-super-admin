@@ -47,7 +47,8 @@ class RecentUsers extends StatelessWidget {
                   ],
                   rows: List.generate(
                     controller.users.length,
-                    (index) => recentUserDataRow( controller.users[index], context),
+                    (index) =>
+                        recentUserDataRow(controller.users[index], context),
                   ),
                 ),
               ),
@@ -67,7 +68,8 @@ DataRow recentUserDataRow(AdminModel userInfo, BuildContext context) {
           children: [
             TextAvatar(
               size: 35,
-              backgroundColor: Colors.white,
+              backgroundColor:
+                  (userInfo.active ?? false) ? Colors.green : Colors.red,
               textColor: Colors.white,
               fontSize: 14,
               upperCase: true,
@@ -102,6 +104,139 @@ DataRow recentUserDataRow(AdminModel userInfo, BuildContext context) {
               overflow: TextOverflow.ellipsis,
             ),
             const Spacer(),
+            (userInfo.active ?? false)
+                ? TextButton(
+                    child: Text("Disable",
+                        style: TextStyle(color: Colors.redAccent)),
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (_) {
+                            return AlertDialog(
+                                title: Center(
+                                  child: Column(
+                                    children: [
+                                      Icon(Icons.warning_outlined,
+                                          size: 36, color: Colors.red),
+                                      SizedBox(height: 20),
+                                      Text("Confirm"),
+                                    ],
+                                  ),
+                                ),
+                                content: Container(
+                                  color: secondaryColor,
+                                  height: 70,
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                          "Are you sure want to disable '${userInfo.fullname}'?"),
+                                      SizedBox(
+                                        height: 16,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          ElevatedButton.icon(
+                                              icon: Icon(
+                                                Icons.close,
+                                                size: 14,
+                                              ),
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              label: Text("Cancel")),
+                                          SizedBox(
+                                            width: 20,
+                                          ),
+                                          ElevatedButton.icon(
+                                              icon: Icon(
+                                                Icons.delete,
+                                                size: 14,
+                                              ),
+                                              style: ElevatedButton.styleFrom(
+                                                  backgroundColor: Colors.red),
+                                              onPressed: () {
+                                                Get.find<DashboardController>()
+                                                    .disableAdmin(userInfo);
+                                                Get.back();
+                                              },
+                                              label: Text("Disable"))
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ));
+                          });
+                    },
+                    // Delete
+                  )
+                : TextButton(
+                    child: Text("Enable",
+                        style: TextStyle(color: Colors.greenAccent)),
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (_) {
+                            return AlertDialog(
+                                title: Center(
+                                  child: Column(
+                                    children: [
+                                      Icon(Icons.warning_outlined,
+                                          size: 36, color: Colors.greenAccent),
+                                      SizedBox(height: 20),
+                                      Text("Confirm"),
+                                    ],
+                                  ),
+                                ),
+                                content: Container(
+                                  color: secondaryColor,
+                                  height: 70,
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                          "Are you sure want to enable '${userInfo.fullname}'?"),
+                                      SizedBox(
+                                        height: 16,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          ElevatedButton.icon(
+                                              icon: Icon(
+                                                Icons.close,
+                                                size: 14,
+                                              ),
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              label: Text("Cancel")),
+                                          SizedBox(
+                                            width: 20,
+                                          ),
+                                          ElevatedButton.icon(
+                                              icon: Icon(
+                                                Icons.lock_open,
+                                                size: 14,
+                                              ),
+                                              style: ElevatedButton.styleFrom(
+                                                  backgroundColor: Colors.greenAccent),
+                                              onPressed: () {
+                                                Get.find<DashboardController>()
+                                                    .enableAdmin(userInfo);
+                                                Get.back();
+                                              },
+                                              label: Text("Enable"))
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ));
+                          });
+                    },
+                    // Delete
+                  ),
             TextButton(
               child: Text("Delete", style: TextStyle(color: Colors.redAccent)),
               onPressed: () {
@@ -164,7 +299,7 @@ DataRow recentUserDataRow(AdminModel userInfo, BuildContext context) {
                     });
               },
               // Delete
-            ),
+            )
           ],
         ),
       ),

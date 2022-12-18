@@ -5,27 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5190dc4-6122-4406-b980-92c82a9d4798" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/screens/dashboard/codes_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/dashboard/components/recent_codes.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/dashboard/controllers/codes_controller.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/home/home_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fitness-super-admin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fitness-super-admin.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/dashboard/components/input_form.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/dashboard/controllers/center_controller.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/services/utils/random.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/dashboard/components/header.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/dashboard/components/header.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/dashboard/components/recent_codes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/dashboard/components/recent_codes.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/dashboard/components/recent_users.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/dashboard/components/recent_users.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/dashboard/controllers/codes_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/dashboard/controllers/codes_controller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/dashboard/controllers/dashboard_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/dashboard/controllers/dashboard_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/forms/controllers/detail_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/forms/controllers/detail_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/forms/input_form.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/forms/input_form.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/home/components/side_menu.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/components/side_menu.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/home/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/home_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/login/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/login/login_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/constants/api_constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/constants/api_constants.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/services/data/models/user.model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/data/models/user.model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/services/data/models/user.model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/data/models/user.model.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/services/data/providers/auth_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/data/providers/auth_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/services/data/providers/log_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/data/providers/log_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/services/data/repositories/auth_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/data/repositories/auth_repository.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/services/data/repositories/log_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/data/repositories/log_repository.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/services/services/auth_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/services/auth_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/services/network_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/services/network_service.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +45,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -65,12 +63,13 @@
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/screens/dashboard/controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/screens/dashboard/components" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/screens/dashboard/components" />
       <recent name="$PROJECT_DIR$/lib/screens/dashboard/controllers" />
       <recent name="$PROJECT_DIR$/lib/screens/dashboard" />
     </key>
@@ -108,10 +107,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
           <url>file://$PROJECT_DIR$/lib/screens/dashboard/components/recent_codes.dart</url>
-          <line>91</line>
+          <line>121</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/screens/dashboard/controllers/center_controller.dart</url>
+          <line>26</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
       </breakpoints>
+      <default-breakpoints>
+        <breakpoint suspend="THREAD" type="dart-exception" />
+      </default-breakpoints>
     </breakpoint-manager>
   </component>
 </project>

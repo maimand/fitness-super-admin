@@ -59,16 +59,36 @@ class AdminModel {
   final String? email;
   final String? code;
   final String? center;
+  final bool? active;
 
-  AdminModel(
-      {this.fullname,
-        this.id,
-      this.email,
-      this.center,
-      this.code});
+  AdminModel({this.fullname, this.id, this.email, this.center, this.code, this.active});
 
   factory AdminModel.fromJson(Map<String, dynamic> json) =>
       _$AdminModelFromJson(json);
+}
+
+@JsonSerializable()
+class CenterModel {
+  final String? fullname;
+  final String? email;
+  final String? code;
+  final String? phone;
+  final String? image;
+  final String? description;
+  final String? website;
+
+  CenterModel(
+      {this.fullname,
+      this.phone,
+      this.email,
+      this.image,
+      this.description,
+      this.website,
+      this.code});
+
+  factory CenterModel.fromJson(Map<String, dynamic> json) => _$CenterFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CenterToJson(this);
 }
 
 @JsonSerializable()

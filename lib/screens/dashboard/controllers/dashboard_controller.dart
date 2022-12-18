@@ -27,6 +27,24 @@ class DashboardController extends GetxController {
     }
   }
 
+  void disableAdmin(AdminModel user) async {
+    try {
+      await repository.disableAdmin(user.email ?? '');
+      getUsers();
+    } on Exception catch (e) {
+      Get.snackbar('Disable Admins Error', e.toString());
+    }
+  }
+
+  void enableAdmin(AdminModel user) async {
+    try {
+      await repository.enableAdmin(user.email ?? '');
+      getUsers();
+    } on Exception catch (e) {
+      Get.snackbar('Enable Admins Error', e.toString());
+    }
+  }
+
   void deleteUser(AdminModel user) async {
     try {
       await repository.deleteUser(user.id!);
@@ -35,6 +53,5 @@ class DashboardController extends GetxController {
       Get.snackbar('Delete Admins Error', e.toString());
     }
   }
-
 
 }

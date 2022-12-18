@@ -3,6 +3,7 @@ import 'package:smart_admin_dashboard/core/constants/color_constants.dart';
 import 'package:colorize_text_avatar/colorize_text_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_admin_dashboard/responsive.dart';
+import 'package:smart_admin_dashboard/screens/dashboard/components/input_form.dart';
 import 'package:smart_admin_dashboard/screens/dashboard/controllers/codes_controller.dart';
 import 'package:smart_admin_dashboard/services/data/models/user.model.dart';
 
@@ -44,16 +45,45 @@ class RecentCodes extends StatelessWidget {
                       context: context,
                       builder: (context) => new AlertDialog(
                         contentPadding: const EdgeInsets.all(16.0),
-                        content: new Row(
+                        content:  Column(
+                          mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
-                            new Expanded(
-                              child: new TextField(
-                                controller: controller.nameController,
-                                autofocus: true,
-                                decoration: new InputDecoration(
-                                    labelText: 'Full Name', hintText: 'eg. John Smith'),
-                              ),
-                            )
+                            TextField(
+                              controller: controller.nameController,
+                              autofocus: true,
+                              decoration: new InputDecoration(
+                                  labelText: 'Full Name', hintText: 'eg. John Smith'),
+                            ),
+                            TextField(
+                              controller: controller.emailController,
+                              autofocus: true,
+                              decoration: new InputDecoration(
+                                  labelText: 'Email', hintText: 'email@gmail.com'),
+                            ),
+                            TextField(
+                              controller: controller.phoneController,
+                              autofocus: true,
+                              decoration: new InputDecoration(
+                                  labelText: 'Phone', hintText: '012345678'),
+                            ),
+                            TextField(
+                              controller: controller.desController,
+                              autofocus: true,
+                              decoration: new InputDecoration(
+                                  labelText: 'Description', hintText: 'Wonderful center'),
+                            ),
+                            TextField(
+                              controller: controller.imageController,
+                              autofocus: true,
+                              decoration: new InputDecoration(
+                                  labelText: 'Image', hintText: 'url'),
+                            ),
+                            TextField(
+                              controller: controller.websiteController,
+                              autofocus: true,
+                              decoration: new InputDecoration(
+                                  labelText: 'Website', hintText: 'url'),
+                            ),
                           ],
                         ),
                         actions: <Widget>[
@@ -65,7 +95,7 @@ class RecentCodes extends StatelessWidget {
                           new TextButton(
                               child: const Text('ADD'),
                               onPressed: () {
-                                controller.addAdmin();
+                                controller.addCenter();
                               })
                         ],
                       ),
@@ -91,7 +121,13 @@ class RecentCodes extends StatelessWidget {
                       label: Text("Name"),
                     ),
                     DataColumn(
-                      label: Text("Codes"),
+                      label: Text("Code"),
+                    ),
+                    DataColumn(
+                      label: Text("Name"),
+                    ),
+                    DataColumn(
+                      label: Text("Email"),
                     ),
                   ],
                   rows: List.generate(
@@ -109,7 +145,7 @@ class RecentCodes extends StatelessWidget {
   }
 }
 
-DataRow recentUserDataRow(AdminModel userInfo, BuildContext context) {
+DataRow recentUserDataRow(CenterModel userInfo, BuildContext context) {
   return DataRow(
     cells: [
       DataCell(
@@ -141,6 +177,37 @@ DataRow recentUserDataRow(AdminModel userInfo, BuildContext context) {
           userInfo.code ?? '',
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
+        ),
+      ),
+      DataCell(
+        Text(
+          userInfo.fullname ?? '',
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ),
+      DataCell(
+        Row(
+          children: [Text(
+            userInfo.email ?? '',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+            const Spacer(),
+            TextButton(
+              child: Text("View", style: TextStyle(color: Colors.green)),
+              onPressed: () {
+                Navigator.of(context).push(new MaterialPageRoute<Null>(
+                    builder: (BuildContext context) {
+                      return new FormMaterial(center: userInfo);
+                    },
+                    fullscreenDialog: true));
+
+              },
+              // Delete
+            ),
+
+          ]
         ),
       ),
     ],

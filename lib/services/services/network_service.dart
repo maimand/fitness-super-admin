@@ -27,7 +27,7 @@ class NetWorkService {
   NetWorkService() {
     _dio.interceptors.add(DioInterceptors());
     _dio.interceptors
-        .add(LogInterceptor(responseBody: true, responseHeader: true));
+        .add(LogInterceptor(responseBody: true, requestBody: true));
   }
 
   Dio getDio() {
