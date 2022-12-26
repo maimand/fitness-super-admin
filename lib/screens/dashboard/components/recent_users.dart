@@ -13,6 +13,7 @@ class RecentUsers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<DashboardController>();
+    controller.getUsers();
     return Container(
       padding: EdgeInsets.all(defaultPadding),
       decoration: BoxDecoration(

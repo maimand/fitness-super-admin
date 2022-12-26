@@ -16,6 +16,7 @@ class RecentCodes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<CodesController>();
+    controller.getCenters();
     return Container(
       padding: EdgeInsets.all(defaultPadding),
       decoration: BoxDecoration(

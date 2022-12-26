@@ -26,71 +26,74 @@ class FormMaterial extends StatelessWidget {
           centerTitle: false,
         ),
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              if (center.image != null) Image.network(center.image!),
-              Obx(
-                () => Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Center Name: ${center.fullname}"),
-                      const SizedBox(height: 8),
-                      Text("Email: ${center.email}"),
-                      const SizedBox(height: 8),
-                      Text("Phone: ${center.phone}"),
-                      const SizedBox(height: 8),
-                      Text("Description: ${center.description}"),
-                      const SizedBox(height: 8),
-                      Text("Website: ${center.website}"),
-                      const SizedBox(height: 8),
-                      Text('Admin Whitelist:'),
-                      const SizedBox(height: 8),
-                      ...controller.emails.map((element) => Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text('- $element'),
-                          )),
-                      TextButton(
-                          onPressed: () {
-                            showDialog<String>(
-                              context: context,
-                              builder: (context) => new AlertDialog(
-                                contentPadding: const EdgeInsets.all(16.0),
-                                content: new Row(
-                                  children: <Widget>[
-                                    new Expanded(
-                                      child: new TextField(
-                                        controller: controller.emailController,
-                                        autofocus: true,
-                                        decoration: new InputDecoration(
-                                            labelText: 'Full Name',
-                                            hintText: 'eg. John Smith'),
-                                      ),
-                                    )
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (center.image != null) Image.network(center.image!),
+                Obx(
+                  () => Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Center Name: ${center.fullname}"),
+                        const SizedBox(height: 8),
+                        Text("Email: ${center.email}"),
+                        const SizedBox(height: 8),
+                        Text("Phone: ${center.phone}"),
+                        const SizedBox(height: 8),
+                        Text("Description: ${center.description}"),
+                        const SizedBox(height: 8),
+                        Text("Website: ${center.website}"),
+                        const SizedBox(height: 8),
+                        Text('Admin Whitelist:'),
+                        const SizedBox(height: 8),
+                        ...controller.emails.map((element) => Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text('- $element'),
+                            )),
+                        TextButton(
+                            onPressed: () {
+                              showDialog<String>(
+                                context: context,
+                                builder: (context) => new AlertDialog(
+                                  contentPadding: const EdgeInsets.all(16.0),
+                                  content: new Row(
+                                    children: <Widget>[
+                                      new Expanded(
+                                        child: new TextField(
+                                          controller: controller.emailController,
+                                          autofocus: true,
+                                          decoration: new InputDecoration(
+                                              labelText: 'Full Name',
+                                              hintText: 'eg. John Smith'),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  actions: <Widget>[
+                                    new TextButton(
+                                        child: const Text('CANCEL'),
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        }),
+                                    new TextButton(
+                                        child: const Text('ADD'),
+                                        onPressed: () {
+                                          controller.addEmailForCenter();
+                                        })
                                   ],
                                 ),
-                                actions: <Widget>[
-                                  new TextButton(
-                                      child: const Text('CANCEL'),
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      }),
-                                  new TextButton(
-                                      child: const Text('ADD'),
-                                      onPressed: () {
-                                        controller.addEmailForCenter();
-                                      })
-                                ],
-                              ),
-                            );
-                          },
-                          child: Text('Add email'))
-                    ],
+                              );
+                            },
+                            child: Text('Add email'))
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ));
   }
